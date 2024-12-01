@@ -1,0 +1,616 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Advent of Code 2024 with Modern Fortran">
+    <meta name="author" content="Jacob Williams" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>startswith_ss &ndash; AoC-2024</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">AoC-2024 </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../sourcefile/aoc_utilities.f90.html">Source File</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>startswith_ss
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.6% of total for procedures.">4 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/aoc_utilities.F90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/aoc_utilities.f90.html'>aoc_utilities.F90</a></li>
+                <li class="breadcrumb-item"><a href='../module/aoc_utilities.html'>aoc_utilities</a></li>
+            <li class="breadcrumb-item active" aria-current="page">startswith_ss</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/startswith_ss.html#src">startswith_ss</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private pure function startswith_ss(str, substring)  
+</h2>
+    
+
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-str~7"></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>str</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-substring~2"></span>
+              type(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>substring</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-startswith_ss"></span>
+          logical
+        </small>
+      </h3>
+      
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~startswith_ss~~CallsGraph Pages: 1 -->
+<svg id="procstartswith_ssCallsGraph" width="304pt" height="116pt"
+ viewBox="0.00 0.00 304.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~startswith_ss~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>proc~~startswith_ss~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 300,-112 300,4 -4,4"/>
+<!-- proc~startswith_ss -->
+<g id="proc~~startswith_ss~~CallsGraph_node1" class="node">
+<title>proc~startswith_ss</title>
+<polygon fill="none" stroke="black" points="79,-66 0,-66 0,-42 79,-42 79,-66"/>
+<text text-anchor="middle" x="39.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">startswith_ss</text>
+</g>
+<!-- interface~startswith -->
+<g id="proc~~startswith_ss~~CallsGraph_node2" class="node">
+<title>interface~startswith</title>
+<g id="a_proc~~startswith_ss~~CallsGraph_node2"><a xlink:href="../interface/startswith.html" xlink:title="startswith">
+<polygon fill="#a7506f" stroke="#a7506f" points="179,-66 115,-66 115,-42 179,-42 179,-66"/>
+<text text-anchor="middle" x="147" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith</text>
+</a>
+</g>
+</g>
+<!-- proc~startswith_ss&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CallsGraph_edge1" class="edge">
+<title>proc~startswith_ss&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M79.19,-47.47C87.55,-47.2 96.42,-47.18 104.87,-47.4"/>
+<polygon fill="#000000" stroke="#000000" points="104.78,-50.9 114.91,-47.78 105.05,-43.9 104.78,-50.9"/>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_ss -->
+<g id="proc~~startswith_ss~~CallsGraph_edge5" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_ss</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M114.91,-60.22C106.86,-60.64 98,-60.81 89.29,-60.73"/>
+<polygon fill="#000000" stroke="#000000" points="89.25,-57.23 79.19,-60.53 89.11,-64.23 89.25,-57.23"/>
+</g>
+<!-- proc~startswith_cc -->
+<g id="proc~~startswith_ss~~CallsGraph_node3" class="node">
+<title>proc~startswith_cc</title>
+<g id="a_proc~~startswith_ss~~CallsGraph_node3"><a xlink:href="../proc/startswith_cc.html" xlink:title="startswith_cc">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="296,-108 215,-108 215,-84 296,-84 296,-108"/>
+<text text-anchor="middle" x="255.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith_cc</text>
+</a>
+</g>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_cc -->
+<g id="proc~~startswith_ss~~CallsGraph_edge2" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_cc</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M178.52,-66.04C189.77,-70.47 202.69,-75.57 214.65,-80.28"/>
+<polygon fill="#000000" stroke="#000000" points="213.39,-83.55 223.98,-83.96 215.96,-77.04 213.39,-83.55"/>
+</g>
+<!-- proc~startswith_cs -->
+<g id="proc~~startswith_ss~~CallsGraph_node4" class="node">
+<title>proc~startswith_cs</title>
+<g id="a_proc~~startswith_ss~~CallsGraph_node4"><a xlink:href="../proc/startswith_cs.html" xlink:title="startswith_cs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="295.5,-66 215.5,-66 215.5,-42 295.5,-42 295.5,-66"/>
+<text text-anchor="middle" x="255.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith_cs</text>
+</a>
+</g>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_cs -->
+<g id="proc~~startswith_ss~~CallsGraph_edge3" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_cs</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M179.09,-47.8C187.21,-47.37 196.17,-47.19 204.99,-47.26"/>
+<polygon fill="#000000" stroke="#000000" points="205.15,-50.77 215.22,-47.46 205.29,-43.77 205.15,-50.77"/>
+</g>
+<!-- proc~startswith_sc -->
+<g id="proc~~startswith_ss~~CallsGraph_node5" class="node">
+<title>proc~startswith_sc</title>
+<g id="a_proc~~startswith_ss~~CallsGraph_node5"><a xlink:href="../proc/startswith_sc.html" xlink:title="startswith_sc">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="295.5,-24 215.5,-24 215.5,0 295.5,0 295.5,-24"/>
+<text text-anchor="middle" x="255.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith_sc</text>
+</a>
+</g>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_sc -->
+<g id="proc~~startswith_ss~~CallsGraph_edge4" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_sc</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M165.59,-41.9C176.53,-36.41 191.2,-30.11 205.46,-24.61"/>
+<polygon fill="#000000" stroke="#000000" points="207.08,-27.74 215.21,-20.95 204.62,-21.19 207.08,-27.74"/>
+</g>
+<!-- proc~startswith_cs&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CallsGraph_edge6" class="edge">
+<title>proc~startswith_cs&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M215.22,-60.54C206.75,-60.8 197.77,-60.82 189.23,-60.59"/>
+<polygon fill="#000000" stroke="#000000" points="189.22,-57.09 179.09,-60.2 188.95,-64.09 189.22,-57.09"/>
+</g>
+<!-- proc~startswith_sc&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CallsGraph_edge7" class="edge">
+<title>proc~startswith_sc&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M236.82,-24.15C223.72,-30.71 205.31,-38.44 188.65,-44.55"/>
+<polygon fill="#000000" stroke="#000000" points="187.34,-41.3 179.09,-47.94 189.69,-47.89 187.34,-41.3"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~startswith_ss~~CalledByGraph Pages: 1 -->
+<svg id="procstartswith_ssCalledByGraph" width="303pt" height="74pt"
+ viewBox="0.00 0.00 303.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~startswith_ss~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~startswith_ss~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 299,-70 299,4 -4,4"/>
+<!-- proc~startswith_ss -->
+<g id="proc~~startswith_ss~~CalledByGraph_node1" class="node">
+<title>proc~startswith_ss</title>
+<polygon fill="none" stroke="black" points="79,-45 0,-45 0,-21 79,-21 79,-45"/>
+<text text-anchor="middle" x="39.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">startswith_ss</text>
+</g>
+<!-- interface~startswith -->
+<g id="proc~~startswith_ss~~CalledByGraph_node2" class="node">
+<title>interface~startswith</title>
+<g id="a_proc~~startswith_ss~~CalledByGraph_node2"><a xlink:href="../interface/startswith.html" xlink:title="startswith">
+<polygon fill="#a7506f" stroke="#a7506f" points="179,-45 115,-45 115,-21 179,-21 179,-45"/>
+<text text-anchor="middle" x="147" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith</text>
+</a>
+</g>
+</g>
+<!-- proc~startswith_ss&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge4" class="edge">
+<title>proc~startswith_ss&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M79.19,-26.47C87.55,-26.2 96.42,-26.18 104.87,-26.4"/>
+<polygon fill="#000000" stroke="#000000" points="104.78,-29.9 114.91,-26.78 105.05,-22.9 104.78,-29.9"/>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_ss -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge1" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_ss</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M114.91,-39.22C106.86,-39.64 98,-39.81 89.29,-39.73"/>
+<polygon fill="#000000" stroke="#000000" points="89.25,-36.23 79.19,-39.53 89.11,-43.23 89.25,-36.23"/>
+</g>
+<!-- proc~startswith_cs -->
+<g id="proc~~startswith_ss~~CalledByGraph_node3" class="node">
+<title>proc~startswith_cs</title>
+<g id="a_proc~~startswith_ss~~CalledByGraph_node3"><a xlink:href="../proc/startswith_cs.html" xlink:title="startswith_cs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="295,-66 215,-66 215,-42 295,-42 295,-66"/>
+<text text-anchor="middle" x="255" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith_cs</text>
+</a>
+</g>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_cs -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge5" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_cs</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M179.23,-32.97C190.19,-34.57 202.65,-36.93 214.21,-39.56"/>
+<polygon fill="#000000" stroke="#000000" points="213.54,-43 224.09,-41.93 215.18,-36.19 213.54,-43"/>
+</g>
+<!-- proc~startswith_sc -->
+<g id="proc~~startswith_ss~~CalledByGraph_node4" class="node">
+<title>proc~startswith_sc</title>
+<g id="a_proc~~startswith_ss~~CalledByGraph_node4"><a xlink:href="../proc/startswith_sc.html" xlink:title="startswith_sc">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="295,-24 215,-24 215,0 295,0 295,-24"/>
+<text text-anchor="middle" x="255" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">startswith_sc</text>
+</a>
+</g>
+</g>
+<!-- interface~startswith&#45;&gt;proc~startswith_sc -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge6" class="edge">
+<title>interface~startswith&#45;&gt;proc~startswith_sc</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M177.81,-20.96C186.26,-18.81 195.7,-16.74 204.97,-14.98"/>
+<polygon fill="#000000" stroke="#000000" points="205.68,-18.41 214.91,-13.2 204.45,-11.52 205.68,-18.41"/>
+</g>
+<!-- proc~startswith_cs&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge2" class="edge">
+<title>proc~startswith_cs&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M214.91,-52.8C206,-51.31 196.53,-49.43 187.6,-47.4"/>
+<polygon fill="#000000" stroke="#000000" points="188.35,-43.98 177.81,-45.04 186.71,-50.79 188.35,-43.98"/>
+</g>
+<!-- proc~startswith_sc&#45;&gt;interface~startswith -->
+<g id="proc~~startswith_ss~~CalledByGraph_edge3" class="edge">
+<title>proc~startswith_sc&#45;&gt;interface~startswith</title>
+<path fill="none" stroke="#000000" d="M224.09,-24.07C213.25,-26.82 200.82,-29.44 189.19,-31.44"/>
+<polygon fill="#000000" stroke="#000000" points="188.55,-28 179.23,-33.03 189.66,-34.91 188.55,-28"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">pure </span><span class="kt">logical </span><span class="k">function </span><span class="n">startswith_ss</span><span class="p">(</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">substring</span><span class="p">)</span>
+<span class="w">        </span><span class="k">type</span><span class="p">(</span><span class="n">string</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">substring</span>
+<span class="w">        </span><span class="n">startswith_ss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">startswith</span><span class="p">(</span><span class="n">str</span><span class="p">%</span><span class="n">str</span><span class="p">,</span><span class="w"> </span><span class="n">substring</span><span class="p">%</span><span class="n">str</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end function </span><span class="n">startswith_ss</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              AoC-2024
+ was developed by Jacob Williams<br>              &copy; 2024 
+</p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+            </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
