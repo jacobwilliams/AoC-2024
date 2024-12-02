@@ -10,7 +10,7 @@
     <meta name="author" content="Jacob Williams" >
     <link rel="icon" href="../favicon.png">
 
-    <title>clock &ndash; AoC-2024 </title>
+    <title>file_t &ndash; AoC-2024 </title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -62,7 +62,7 @@
 
     <div class="container">
   <div class="row">
-    <h1>clock
+    <h1>file_t
       <small>Derived Type</small>
       
     </h1>
@@ -73,7 +73,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p>26.9% of total for derived types.</p>Including implementation: 21 statements, 32.3% of total for derived types.">7 statements</a>
+                 title="<p>38.5% of total for derived types.</p>Including implementation: 25 statements, 38.5% of total for derived types.">10 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -87,7 +87,7 @@
           <ol class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href='../sourcefile/aoc_utilities.f90.html'>aoc_utilities.F90</a></li>
                 <li class="breadcrumb-item"><a href='../module/aoc_utilities.html'>aoc_utilities</a></li>
-            <li class="breadcrumb-item active" aria-current="page">clock</li>
+            <li class="breadcrumb-item active" aria-current="page">file_t</li>
           </ol>
         </nav>
       </div>
@@ -113,16 +113,24 @@
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/clock.html#variable-begin">begin</a>
-            <a class="list-group-item" href="../type/clock.html#variable-end">end</a>
-            <a class="list-group-item" href="../type/clock.html#variable-rate">rate</a>
+            <a class="list-group-item" href="../type/file_t.html#variable-iunit">iunit</a>
         </div>
       </div>
     </div>
 
   
-  
-  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#cons-0"
+         aria-expanded="false" aria-controls="cons-0">
+         <h4 class="card-header bg-primary text-white">Constructor</h4>
+      </a>
+      <div id="cons-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/file_t.html#interface-file_t">file_t</a>
+        </div>
+      </div>
+    </div>
+
   
   
   
@@ -136,14 +144,26 @@
   
   
       <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#fins-0"
+         aria-expanded="false" aria-controls="fins-0">
+         <h4 class="card-header bg-primary text-white">Finalization Procedures</h4>
+      </a>
+      <div id="fins-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../type/file_t.html#finalproc-close_file">close_file</a>
+        </div>
+      </div>
+    </div>
+
+      <div class="card mb-4">
       <a data-bs-toggle="collapse" href="#boundprocs-0"
          aria-expanded="false" aria-controls="boundprocs-0">
          <h4 class="card-header bg-primary text-white">Type-Bound Procedures</h4>
       </a>
       <div id="boundprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../type/clock.html#boundprocedure-tic">tic</a>
-            <a class="list-group-item" href="../type/clock.html#boundprocedure-toc">toc</a>
+            <a class="list-group-item" href="../type/file_t.html#boundprocedure-n_lines">n_lines</a>
+            <a class="list-group-item" href="../type/file_t.html#boundprocedure-read_line">read_line</a>
         </div>
       </div>
     </div>
@@ -153,7 +173,7 @@
     <div class="card card-primary">
       <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
       <div class="list-group">
-        <a class="list-group-item" href="../type/clock.html#src">clock</a>
+        <a class="list-group-item" href="../type/file_t.html#src">file_t</a>
       </div>
     </div>
 
@@ -164,7 +184,7 @@
     
     <div class="col-md-9" id='text'>
       <h2 id="type-def-statement">
-        type, public :: clock</h2>
+        type, public :: file_t</h2>
     
     <br>
 
@@ -182,51 +202,17 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-begin"></span>
-              integer(kind=ip),
+              <span class="anchor" id="variable-iunit"></span>
+              integer,
             </td>
-              <td>private</td>
+              <td>public</td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>begin</strong></td>
-                <td></td>
-                <td></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-end"></span>
-              integer(kind=ip),
-            </td>
-              <td>private</td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>end</strong></td>
-                <td></td>
-                <td></td>
-            <td>
-                
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-rate"></span>
-              integer(kind=ip),
-            </td>
-              <td>private</td>
-            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>rate</strong></td>
-                <td></td>
-                <td></td>
+            <td><strong>iunit</strong></td>
+<td> =</td>
+                <td>0</td>
             <td>
                 
             </td>
@@ -237,28 +223,142 @@
     </section>
     <br>
     
+      <section>
+        <h2>Constructor</h2>
+            <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-file_t"></span>
+      <h3>public        interface <a href='../interface/file_t.html'>file_t</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private  function <a href='../proc/open_file.html'>open_file</a>(filename) result(f)  
 
+    </h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-filename"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>filename</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='file_t.html'>file_t</a>)</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+      </section>
+      <br>
+
+      <section>
+        <h2>Finalization Procedures</h2>
+            <div class="card">
+    <div class="card-header codesum">
+      <span class="anchor" id="finalproc-close_file"></span>
+      <h3>final :: <strong>close_file</strong> </h3>
+    </div>
+    <div class="card-body">
+      
+      
+    </div>
+    <ul class="list-group">
+      <li class="list-group-item">
+            <h3>
+    private  subroutine <a href='../proc/close_file.html'>close_file</a>(me)  
+
+    </h3>
+    
+  
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me"></span>
+              type(<a href='file_t.html'>file_t</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+      </li>
+    </ul>
+  </div>
+
+      </section>
+      <br>
 
       <section>
         <h2>Type-Bound Procedures</h2>
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-tic"></span>
+      <span class="anchor" id="boundprocedure-n_lines"></span>
       <h3>
           procedure, public ::
-  <strong>tic</strong> => <a href='/home/runner/work/AoC-2024/AoC-2024/doc/proc/clock_start.html'>clock_start</a>
+  <strong>n_lines</strong>
         
       </h3>
     </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/clock_start.html'>clock_start</a>(me)  
+    private  function <a href='../proc/n_lines.html'>n_lines</a>(me)  
 </h3>
     
 
-  <p>Start the clock</p>
+  
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -274,9 +374,9 @@
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='clock.html'>clock</a>),
+              class(<a href='file_t.html'>file_t</a>),
             </td>
-<td>intent(inout)</td>
+<td>intent(in)</td>
               <td></td>            <td>
               
             </td>
@@ -289,6 +389,11 @@
     </tbody>
   </table>
 
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    
 
         </li>
     </ul>
@@ -298,21 +403,21 @@
           <div class="row">
               <div class="card mt-3">
     <div class="card-header codesum">
-      <span class="anchor" id="boundprocedure-toc"></span>
+      <span class="anchor" id="boundprocedure-read_line"></span>
       <h3>
           procedure, public ::
-  <strong>toc</strong> => <a href='/home/runner/work/AoC-2024/AoC-2024/doc/proc/clock_end.html'>clock_end</a>
+  <strong>read_line</strong> => <a href='/home/runner/work/AoC-2024/AoC-2024/doc/proc/read_line_from_file.html'>read_line_from_file</a>
         
       </h3>
     </div>
     <ul class="list-group">
         <li class="list-group-item">
                   <h3>
-    private  subroutine <a href='../proc/clock_end.html'>clock_end</a>(me, case_str)  
+    private  function <a href='../proc/read_line_from_file.html'>read_line_from_file</a>(me) result(line)  
 </h3>
     
 
-  <p>Print runtime in milliseconds form the start of the clock.</p>
+  
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -328,9 +433,9 @@
         <tr>
             <td>
               <span class="anchor" ></span>
-              class(<a href='clock.html'>clock</a>),
+              class(<a href='file_t.html'>file_t</a>),
             </td>
-<td>intent(inout)</td>
+<td>intent(in)</td>
               <td></td>            <td>
               
             </td>
@@ -340,24 +445,14 @@
 
             </td>
         </tr>
-        <tr>
-            <td>
-              <span class="anchor" ></span>
-              character(len=*),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>case_str</strong></td>
-            <td>
-<p>description of the case</p>
-            </td>
-        </tr>
     </tbody>
   </table>
 
+    <h4>
+    Return Value
+    <small>character(len=:), allocatable</small>
+    </h4>
+    
 
         </li>
     </ul>
@@ -368,13 +463,13 @@
 
     <section>
     <h3><span class="anchor" id="src"></span>Source Code</h3>
-    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">clock</span>
-<span class="w">        </span><span class="k">private</span>
-<span class="k">        </span><span class="kt">integer</span><span class="p">(</span><span class="n">ip</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">begin</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span>
-<span class="w">    </span><span class="k">contains</span>
-<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tic</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">clock_start</span>
-<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">toc</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">clock_end</span>
-<span class="w">    </span><span class="k">end type </span><span class="n">clock</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">    </span><span class="k">type</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">file_t</span>
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="k">contains</span>
+<span class="k">        procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n_lines</span>
+<span class="w">        </span><span class="k">procedure</span><span class="p">,</span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">read_line</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">read_line_from_file</span>
+<span class="w">        </span><span class="k">final</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">close_file</span>
+<span class="w">    </span><span class="k">end type </span><span class="n">file_t</span>
 </pre></div>
 
     </section>

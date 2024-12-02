@@ -44,6 +44,18 @@
         procedure,public :: to_int_64 => string_to_int_64
     end type string
 
+    type,public :: file_t
+        integer :: iunit = 0
+        contains
+        procedure,public :: n_lines
+        procedure,public :: read_line => read_line_from_file
+        final :: close_file
+    end type file_t
+
+    interface file_t
+        procedure :: open_file
+    end interface file_t
+
     type,public :: int64_vec
         !! an type that contains an allocatable ip array.
         !! so we can have an array of these.
@@ -114,6 +126,43 @@
 
 contains
 !************************************************************************************************
+
+
+!****************************************************************
+! file_t class functions
+
+  function open_file(filename) result(f)
+    character(len=*),intent(in) :: filename
+    type(file_t) :: f
+    integer :: istat
+    print*, 'open'
+    open(newunit=f%iunit, file=filename, status='OLD', iostat=istat)
+    !print*, 'iunit = ', f%iunit
+    if (istat/=0) error stop istat
+  end function open_file
+
+  subroutine close_file(me)
+    type(file_t),intent(inout) :: me
+    if (me%iunit/=0) then
+        print*, 'close'
+        close (me%iunit)
+        me%iunit = 0
+    end if
+  end subroutine close_file
+
+  integer function n_lines(me)
+    class(file_t),intent(in) :: me
+    print*, 'n_lines'
+    n_lines = number_of_lines_in_file(me%iunit)
+  end function n_lines
+
+  function read_line_from_file(me) result(line)
+    class(file_t),intent(in) :: me
+    character(len=:),allocatable :: line
+    line = read_line(me%iunit)
+  end function read_line_from_file
+
+!****************************************************************
 
 !****************************************************************
 !>
@@ -260,7 +309,7 @@ contains
 
 !****************************************************************
 !>
-!  Read a file into a 2d character array.
+!  Read a file into a 2d int array. Uses the '(*(I1))' format.
 
     function read_file_to_int_array(filename) result(array)
         character(len=*),intent(in) :: filename
@@ -350,7 +399,9 @@ contains
     rewind(iunit)
     n_lines = 0
     do
+       !print*, n_lines
         read(iunit,fmt='(A1)',iostat=istat) tmp
+        !print*, tmp
         if (is_iostat_end(istat)) exit
         n_lines = n_lines + 1
     end do
