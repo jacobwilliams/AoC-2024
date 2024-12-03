@@ -124,9 +124,39 @@
     end interface manhatten_distance
     public :: manhatten_distance
 
+    public :: read_file_to_string
+
 contains
 !************************************************************************************************
 
+
+function read_file_to_string(filename) result(str)
+    !
+    ! Reads the contents of the file into the allocatable string str.
+    ! If there are any problems, str will be returned unallocated.
+    !
+    implicit none
+
+    character(len=*),intent(in) :: filename
+    character(len=:),allocatable :: str
+
+    integer :: iunit,istat,filesize
+
+    open(newunit=iunit,file=filename,status='OLD',&
+    form='UNFORMATTED',access='STREAM',iostat=istat)
+
+    if (istat==0) then
+        inquire(file=filename, size=filesize)
+        if (filesize>0) then
+            allocate( character(len=filesize) :: str )
+            read(iunit,pos=1,iostat=istat) str
+            if (istat/=0) deallocate(str)
+            close(iunit, iostat=istat)
+        end if
+    end if
+
+    end function read_file_to_string
+!****************************************************************
 
 !****************************************************************
 ! file_t class functions
