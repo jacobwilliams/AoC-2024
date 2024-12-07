@@ -126,6 +126,8 @@
 
     public :: read_file_to_string
 
+    public :: int_to_string
+
 contains
 !************************************************************************************************
 
@@ -214,7 +216,7 @@ function read_file_to_string(filename) result(str)
         integer :: itime !! time in integer milliseconds
         call system_clock(me%end)
         itime = int(1000*(me%end - me%begin) / real(me%rate, wp))
-        write(*,'(a,I4,a)') trim(case_str)//' runtime: ', itime, ' ms'
+        write(*,'(a,I5,a)') trim(case_str)//' runtime: ', itime, ' ms'
         write(*,'(a)') '---------------------------'
         write(*,*) ''
     end subroutine clock_end
@@ -262,10 +264,23 @@ function read_file_to_string(filename) result(str)
         character(len=*),intent(in) :: str
         integer,intent(in) :: kind
         integer(ip) :: i
+        integer :: istat
         if (kind/=ip) error stop 'error'
-        read(str,*) i
+        read(str,*, iostat=istat) i
+        if (istat/=0) then
+            error stop str
+        end if
     end function char_to_int64
 !****************************************************************
+
+    pure function int_to_string(i) result(s)
+    !! integer to string
+        type(string) :: s
+        integer(ip),intent(in) :: i
+        character(len=256) :: s_tmp
+        write(s_tmp, '(I256)') i
+        s%str = trim(adjustl(s_tmp))
+    end function int_to_string
 
 !****************************************************************
 !>
