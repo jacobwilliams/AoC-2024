@@ -73,7 +73,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="100.0% of total for modules and submodules.">829 statements</a>
+                 title="100.0% of total for modules and submodules.">833 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -138,6 +138,7 @@
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-parse">parse</a>
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-split">split</a>
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-int">int</a>
+            <a class="list-group-item" href="../module/aoc_utilities.html#interface-str_to_int64">str_to_int64</a>
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-unique">unique</a>
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-startswith">startswith</a>
             <a class="list-group-item" href="../module/aoc_utilities.html#interface-swap">swap</a>
@@ -996,6 +997,60 @@ Hacky hack just so we can overload as int()</p>
     <h4>
     Return Value
     <small>integer</small>
+    </h4>
+    
+
+          </li>
+    </ul>
+  </div>
+
+              <div class="card">
+    <div class="card-header bg-light codesum">
+      <span class="anchor" id="interface-str_to_int64"></span>
+      <h3>public        interface <a href='../interface/str_to_int64.html'>str_to_int64</a> 
+      </h3>
+    </div>
+    <ul class="list-group">
+          <li class="list-group-item">
+                <h3>
+    private pure elemental function <a href='../proc/string_to_int_64.html'>string_to_int_64</a>(me) result(i)  
+
+    </h3>
+    
+  <p>Basic string to integer routine</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~7"></span>
+              class(<a href='../type/string.html'>string</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer(kind=ip)</small>
     </h4>
     
 

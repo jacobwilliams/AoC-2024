@@ -102,6 +102,10 @@
                      char_array_to_int
     end interface int
     public :: int
+    interface str_to_int64
+        procedure :: string_to_int_64
+    end interface str_to_int64
+    public :: str_to_int64
 
     interface unique
         procedure :: unique32, unique64
