@@ -65,7 +65,9 @@
     public :: read_file_to_integer_array, &
               read_file_to_integer64_array, &
               read_file_to_char_array, &
-              read_file_to_int_array
+              read_file_to_int_array, &
+              read_file_to_int_vec
+
     public :: number_of_lines_in_file
     public :: read_line
     public :: parse_ints, parse_ints64
@@ -130,7 +132,7 @@
 
     public :: read_file_to_string
 
-    public :: int_to_string
+    public :: int_to_string, int_to_str
 
 contains
 !************************************************************************************************
@@ -286,6 +288,16 @@ function read_file_to_string(filename) result(str)
         s%str = trim(adjustl(s_tmp))
     end function int_to_string
 
+    pure function int_to_str(i) result(s)
+    !! integer to string
+        character(len=:),allocatable :: s
+        integer(ip),intent(in) :: i
+        character(len=256) :: s_tmp
+        write(s_tmp, '(I256)') i
+        s = trim(adjustl(s_tmp))
+    end function int_to_str
+
+
 !****************************************************************
 !>
 !  Character array to integer routine
@@ -354,6 +366,25 @@ function read_file_to_string(filename) result(str)
         close(iunit)
 
     end function read_file_to_char_array
+!****************************************************************
+
+    function read_file_to_int_vec(filename) result(array)
+        !! read a file that is single string of ints into a vector
+        character(len=*),intent(in) :: filename
+        integer,dimension(:),allocatable :: array
+
+        integer :: i, iunit, n_lines, n_cols
+        character(len=:),allocatable :: line
+
+        open(newunit=iunit, file=filename, status='OLD')
+        line = read_line(iunit)
+        allocate(array(len(line)))
+        do i = 1, size(array)
+            read(line(i:i),'(*(I1))') array(i)
+        end do
+        close(iunit)
+
+    end function read_file_to_int_vec
 !****************************************************************
 
 !****************************************************************
