@@ -22,7 +22,7 @@
 #else
     integer,parameter,public :: wp = real64   !! default real kind [8 bytes]
 #endif
-    integer,parameter,public :: ip = int64   !! default int kind
+integer,parameter,public :: ip = int64   !! default int kind
 
     integer,parameter :: chunk_size = 100 !! for dynamic allocations
 
