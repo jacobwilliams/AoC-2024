@@ -133,6 +133,7 @@
     public :: read_file_to_string
 
     public :: int_to_string, int_to_str
+    public :: num_digits
 
 contains
 !************************************************************************************************
@@ -1452,6 +1453,13 @@ function read_file_to_string(filename) result(str)
 
     end function cross
 !************************************************************************************************
+
+    pure integer function num_digits(i)
+        !! return the number of digits in the integer
+        integer(ip),intent(in) :: i
+        num_digits = 1_ip+int(log10(float(i)), ip)
+    end function num_digits
+
 
 !************************************************************************************************
     end module aoc_utilities
