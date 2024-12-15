@@ -135,6 +135,13 @@ integer,parameter,public :: ip = int64   !! default int kind
     public :: int_to_string, int_to_str
     public :: num_digits
 
+    interface get_indices
+        !! to get all the indices in a 2d array that match a value
+        procedure :: get_indices_in_char_array, &
+                     get_indices_in_int_array
+    end interface get_indices
+    public :: get_indices
+
 contains
 !************************************************************************************************
 
@@ -1454,12 +1461,38 @@ function read_file_to_string(filename) result(str)
     end function cross
 !************************************************************************************************
 
+!************************************************************************************************
     pure integer function num_digits(i)
         !! return the number of digits in the integer
         integer(ip),intent(in) :: i
         num_digits = 1_ip+int(log10(float(i)), ip)
     end function num_digits
+!************************************************************************************************
 
+!************************************************************************************************
+    subroutine get_indices_in_char_array(array, val, iloc, jloc)
+        !! return the indices of all the `val` elements in 2d `array`.
+        character(len=1),dimension(:,:),intent(in) :: array
+        character(len=1),intent(in) :: val
+        integer,dimension(:),allocatable,intent(out) :: iloc, jloc
+        integer :: k !! counter
+        ! do this by creating index matrices, and using mask to get the ones we want
+        iloc = pack(spread([(k, k = 1, size(array,1))], dim=2, ncopies=size(array,2)), mask=array==val)
+        jloc = pack(spread([(k, k = 1, size(array,2))], dim=1, ncopies=size(array,1)), mask=array==val)
+    end subroutine get_indices_in_char_array
+!************************************************************************************************
+!************************************************************************************************
+    subroutine get_indices_in_int_array(array, val, iloc, jloc)
+        !! return the indices of all the `val` elements in 2d `array`.
+        integer,dimension(:,:),intent(in) :: array
+        integer,intent(in) :: val
+        integer,dimension(:),allocatable,intent(out) :: iloc, jloc
+        integer :: k !! counter
+        ! do this by creating index matrices, and using mask to get the ones we want
+        iloc = pack(spread([(k, k = 1, size(array,1))], dim=2, ncopies=size(array,2)), mask=array==val)
+        jloc = pack(spread([(k, k = 1, size(array,2))], dim=1, ncopies=size(array,1)), mask=array==val)
+    end subroutine get_indices_in_int_array
+!************************************************************************************************
 
 !************************************************************************************************
     end module aoc_utilities
